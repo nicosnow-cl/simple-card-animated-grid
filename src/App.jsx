@@ -105,7 +105,7 @@ function PBCard3DMove({ id }) {
       /> */}
 
       <div
-        className="absolute inset-3 rounded-lg flex flex-col items-center justify-end border border-gray-600 shadow-xl p-3"
+        className="absolute inset-3 rounded-lg flex flex-col items-center justify-center border border-gray-600 shadow-xl"
         style={{
           transform: 'translateZ(50px)',
           transformStyle: 'preserve-3d',
@@ -115,26 +115,28 @@ function PBCard3DMove({ id }) {
           backgroundPosition: 'center',
         }}
       >
-        {/* <p
-          className="text-sm font-bold p-2"
+        <div className="absolute backdrop-blur-sm w-full h-full rounded-lg shadow-lg p-3"></div>
+
+        <img
+          alt="test"
+          className="max-w-none"
+          height={340}
+          src="/overwatch.png"
+          width={420}
           style={{
             transform: 'translateZ(30px)',
+            transformStyle: 'preserve-3d',
           }}
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis at
-          dicta harum eveniet blanditiis dolorem itaque natus! At, consectetur,
-          voluptate, provident sit perspiciatis optio deserunt debitis iusto vel
-          sed velit!
-        </p> */}
+        />
 
-        <button
+        {/* <button
           className="bg-purple-800 rounded-full px-3 py-2 shadow-md border border-purple-600 hover:bg-purple-700 hover:border-purple-500 uppercase text-xs font-bold transition-all duration-300 ease-in-out shadow-violet-500/80"
           style={{
             transform: 'translateZ(30px)',
           }}
         >
           Ver más
-        </button>
+        </button> */}
       </div>
     </motion.div>
   );
