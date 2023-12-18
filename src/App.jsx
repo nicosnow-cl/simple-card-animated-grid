@@ -22,7 +22,7 @@ const spring = {
 };
 
 const variants = {
-  visible: { opacity: 1, scale: 1 },
+  show: { opacity: 1, scale: 1 },
   hidden: { opacity: 0, scale: 0.5 },
   exit: { opacity: 0, rotateX: 90, scale: 0.5 },
 };
@@ -37,10 +37,10 @@ function OnReveal({ id, children }) {
       <AnimatePresence>
         {isInView && (
           <motion.div
-            key={`card-${id}`}
+            key={id}
             variants={variants}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
+            animate="show"
             exit="exit"
           >
             {children}
@@ -115,7 +115,16 @@ function PBCard3DMove({ id }) {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute backdrop-blur-sm w-full h-full rounded-lg shadow-lg p-3"></div>
+        <div
+          className={`
+        absolute
+        blur-xl
+        bg-gray-950/40
+        rounded-full
+        p-3 
+      `}
+          style={{ inset: '2.5rem' }}
+        ></div>
 
         <img
           alt="test"
@@ -126,6 +135,7 @@ function PBCard3DMove({ id }) {
           style={{
             transform: 'translateZ(30px)',
             transformStyle: 'preserve-3d',
+            filter: 'drop-shadow(0px 0px 20px rgba(0, 0, 0, 1))',
           }}
         />
 
@@ -149,17 +159,15 @@ function App() {
         <h1 className="text-2xl font-bold text-white">Primer bloque qliao</h1>
       </div>
 
-      <div className="grid grid-cols-4 grid-rows-6 gap-6">
-        <MotionConfig transition={spring}>
+      <MotionConfig transition={spring}>
+        <div className="grid grid-cols-4 grid-rows-6 gap-6">
           {Array(cards_number)
             .fill()
             .map((_, i) => (
-              <OnReveal key={i} id={i}>
-                <PBCard3DMove id={i} />
-              </OnReveal>
+              <PBCard3DMove id={i} key={i} />
             ))}
-        </MotionConfig>
-      </div>
+        </div>
+      </MotionConfig>
     </main>
   );
 }
